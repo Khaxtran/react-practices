@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+let colors = ['gold', 'grey', 'brown'];
+
+export const App = (props) => {
+  const [color, setColor] = useState('Tomato');
+  
+  const divStyle = {backgroundColor: color,
+                    width: '100%',
+                    height: '500px',
+                    textAlign: 'center',
+                    padding: '150px 0px',
+                    fontSize: '20px'}
+
+  return(
+    <div style={divStyle}>
+      <h1>Click button to change color</h1>
+      {colors.map(color => (
+        <button onClick={() => setColor(color)}>{color}</button>
+      ))}
     </div>
-  );
-}
 
-export default App;
+  )
+}
